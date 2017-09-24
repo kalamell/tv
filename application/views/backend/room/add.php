@@ -62,7 +62,7 @@
                            <?php foreach($countries as $c):
 
                            ?>
-                             <option value="<?=$c->num_code;?>"><?=$c->nationality;?></option>
+                             <option value="<?=$c->num_code;?>"><?=$c->en_short_name;?></option>
                            <?php endforeach;?>
                          </select>
                        </div>
@@ -85,7 +85,7 @@
 
                       <div class="form-group col-md-6">
                         <label for="room_status">หมวดหมู่</label>
-                        <input type="radio" name="deal" class="" value="hot"> Hot Deals
+                        <input type="radio" name="deal" class="" value="hot" checked> Hot Deals
                         <input type="radio" name="deal" class="" value="hotel"> Hotel Deals
                       </div>
 

@@ -66,7 +66,7 @@
                            <?php foreach($countries as $c):
 
                            ?>
-                             <option value="<?=$c->num_code;?>" <?=$r->country_id==$c->num_code?' selected':'';?>><?=$c->nationality;?></option>
+                             <option value="<?=$c->num_code;?>" <?=$r->country_id==$c->num_code?' selected':'';?>><?=$c->en_short_name;?></option>
                            <?php endforeach;?>
                          </select>
                        </div>
