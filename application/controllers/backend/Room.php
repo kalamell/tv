@@ -14,7 +14,7 @@ class Room extends Backend_Controller {
     public function add()
     {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
-        $this->countries = $this->db->get('countries')->result();
+        $this->countries = $this->db->order_by('en_short_name', 'ASC')->get('countries')->result();
         $this->_render('room/add', $this);
     }
 
@@ -23,6 +23,7 @@ class Room extends Backend_Controller {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
         $this->r = $this->db->where('room_id', $room_id)->get('rooms')->row();
         $this->promotion = $this->db->where('room_id', $room_id)->get('promotion')->result();
+        $this->countries = $this->db->order_by('en_short_name', 'ASC')->get('countries')->result();
         $this->_render('room/edit', $this);
     }
 
@@ -90,12 +91,13 @@ class Room extends Backend_Controller {
                 'seo_title' => serialize($this->input->post('seo_title')),
                 'seo_keywords' => serialize($this->input->post('seo_keywords')),
                 'seo_description' => serialize($this->input->post('seo_description')),
-                'url' => $this->input->post('url'),
+                'link' => $this->input->post('link'),
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
                 'deal' => $this->input->post('deal'),
             ));
             $room_id = $this->db->insert_id();
+
 
             $this->load->library('upload');
             $config = array(
@@ -154,7 +156,7 @@ class Room extends Backend_Controller {
                 'seo_title' => serialize($this->input->post('seo_title')),
                 'seo_keywords' => serialize($this->input->post('seo_keywords')),
                 'seo_description' => serialize($this->input->post('seo_description')),
-                'url' => $this->input->post('url'),
+                'link' => $this->input->post('link'),
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
                 'deal' => $this->input->post('deal'),
