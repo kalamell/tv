@@ -8,7 +8,12 @@ class Main extends Base_Controller
     public function index()
     {
         $this->banner = $this->db->get('banner')->result();
-      //  $this->rooms = $this->db->get('rooms')->result();
+        $ar = array(
+            840, 702, 764
+        );
+        $this->countries = $this->db->where_in('num_code', $ar
+        )->get('countries')->result();
+        $this->rooms = $this->db->get('rooms')->result();
       //  $this->gallery = $this->db->join('rooms', 'gallery.room_id = rooms.room_id', 'LEFT')->get('gallery')->result();
       //  $this->content = $this->db->where('content_type', 'content')->order_by('content_id', 'DESC')->get('content')->result();
         $this->category = $this->db->get('category')->result();
