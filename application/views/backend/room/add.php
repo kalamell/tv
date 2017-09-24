@@ -83,6 +83,12 @@
                         <input type="text" name="star" class="form-control" id="star" placeholder="" value="">
                       </div>
 
+                      <div class="form-group col-md-6">
+                        <label for="room_status">หมวดหมู่</label>
+                        <input type="radio" name="deal" class="" value="hot"> Hot Deals
+                        <input type="radio" name="deal" class="" value="hotel"> Hotel Deals
+                      </div>
+
 
 
                       <div class="form-group col-md-6">

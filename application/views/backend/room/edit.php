@@ -87,6 +87,12 @@
                       </div>
 
                       <div class="form-group col-md-6">
+                        <label for="room_status">หมวดหมู่</label>
+                        <input type="radio" name="deal" <?=$r->deal=='hot'?'checked':'';?> class="" value="hot"> Hot Deals
+                        <input type="radio" name="deal"  <?=$r->deal=='hotel'?'checked':'';?> class="" value="hotel"> Hotel Deals
+                      </div>
+
+                      <div class="form-group col-md-6">
                         <label for="room_status">สถานะ</label>
                         <input type="radio" name="room_status" <?=$r->room_status=='Y'?'checked':'';?> class="" value="Y"> แสดงผล
                         <input type="radio" name="room_status"  <?=$r->room_status=='N'?'checked':'';?> class="" value="N"> ปิดแสดงผล

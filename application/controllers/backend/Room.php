@@ -93,6 +93,7 @@ class Room extends Backend_Controller {
                 'url' => $this->input->post('url'),
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
+                'deal' => $this->input->post('deal'),
             ));
             $room_id = $this->db->insert_id();
 
@@ -156,6 +157,7 @@ class Room extends Backend_Controller {
                 'url' => $this->input->post('url'),
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
+                'deal' => $this->input->post('deal'),
             ));
             $room_id = $this->input->post('room_id');
 
