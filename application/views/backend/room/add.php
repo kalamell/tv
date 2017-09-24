@@ -3,13 +3,13 @@
         <!-- Content nameer (Page header) -->
         <section class="content-header">
           <h1>
-           ห้องพัก
-            <small>จัดการห้องพัก</small>
+           ทัวร์
+            <small>จัดการทัวร์</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?=site_url('backend');?>"><i class="fa fa-dashboard"></i> หน้าหลัก</a></li>
-            <li class=""><a href="<?=site_url('backend/room');?>">จัดการห้องพัก</a></li>
-            <li class="active">จัดการห้องพัก</li>
+            <li class=""><a href="<?=site_url('backend/room');?>">จัดการทัวร์</a></li>
+            <li class="active">จัดการทัวร์</li>
           </ol>
         </section>
 
@@ -23,28 +23,29 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">จัดการ ห้องพัก</h3>
+                  <h3 class="box-title">จัดการ ทัวร์</h3>
                 </div><!-- /.box-header -->
 
                     <?=form_open_multipart('backend/room/do_save');?>
                   <div class="box-body">
 
-                  <ul class="nav nav-tabs" role="tablist">     
-                  <li role="presentation" class="active"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">ข้อมูลหลัก</a></li>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">ข้อมูลหลัก</a></li>
                     <li role="presentation" class=""><a href="#th" aria-controls="th" role="tab" data-toggle="tab">ไทย</a></li>
                     <li role="presentation"><a href="#en" aria-controls="en" role="tab" data-toggle="tab">อังกฤษ</a></li>
+                    <li role="presentation"><a href="#promotion" aria-controls="en" role="tab" data-toggle="tab">Promotion</a></li>
                   </ul>
                    <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="other" style="padding-top: 10px;">
-                     
+
                      <div class="form-group col-md-6">
-                      <label for="room_no">เลขห้องพัก</label>
+                      <label for="room_no">เลขที่อ้างอิง</label>
                       <input type="text" name="room_no" class="form-control" id="room_no" placeholder="" value="">
                      </div>
                      <div class="form-group col-md-6">
-                        <label for="category_id">ประเภทห้องพัก</label>
+                        <label for="category_id">ประเภท</label>
                         <select type="text" name="category_id" class="form-control" id="category_id" placeholder="">
-                          <option value="">ประเภทห้อง</option>
+                          <option value="">ประเภท</option>
                           <?php foreach($category as $cat):
                           $lang = unserialize($cat->category_name);
 
@@ -55,14 +56,34 @@
                       </div>
 
                       <div class="form-group col-md-6">
+                         <label for="country_id">ประเทศ</label>
+                         <select type="text" name="country_id" class="form-control" id="country_id" placeholder="">
+                           <option value="">ประเทศ</option>
+                           <?php foreach($countries as $c):
+
+                           ?>
+                             <option value="<?=$c->num_code;?>"><?=$c->nationality;?></option>
+                           <?php endforeach;?>
+                         </select>
+                       </div>
+
+                      <div class="form-group col-md-6">
                         <label for="room_price">ราคา</label>
                         <input type="text" name="room_price" class="form-control" id="room_price" placeholder="" value="">
                       </div>
 
+
                       <div class="form-group col-md-6">
-                        <label for="room_total">จำนวนที่พักได้</label>
-                        <input type="text" name="room_total" class="form-control" id="room_total" placeholder="" value="">
+                        <label for="link">Link affiliate</label>
+                        <input type="text" name="link" class="form-control" id="link" placeholder="" value="">
                       </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="star">ดาว</label>
+                        <input type="text" name="star" class="form-control" id="star" placeholder="" value="">
+                      </div>
+
+
 
                       <div class="form-group col-md-6">
                         <label for="room_status">สถานะ</label>
@@ -71,19 +92,15 @@
                       </div>
 
                       <div class="form-group col-md-6">
-                      <label for="room_image">ภาพห้อง ( 270 x 228 )</label>
-                      <input type="file" name="room_image" class="form-control" id="room_image" placeholder="" value="">
-                    </div>
-
-
-
-
+                        <label for="room_image">ภาพ</label>
+                        <input type="file" name="room_image" class="form-control" id="room_image" placeholder="" value="">
+                      </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="th" style="padding-top: 10px;">
 
 
                       <div class="form-group col-md-8">
-                        <label for="room_name">ชื่อ ห้องพัก</label>
+                        <label for="room_name">ชื่อ ทัวร์</label>
                         <input type="text" name="room_name[th]" class="form-control" id="room_name" placeholder="" value="">
                       </div>
 
@@ -93,15 +110,15 @@
                       </div>
 
 
-                      
 
-                     
+
+
                       <div class="form-group col-md-12">
                         <label for="room_description">ข้อมูล</label>
                         <textarea name="room_description[th]" class="form-control detail" id="room_description" placeholder="" rows="10"></textarea>
                       </div>
 
-                      
+
 
 
                       <div class="form-group col-md-12">
@@ -123,8 +140,8 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="en" style="padding-top: 10px;">
 
-                    <div class="form-group col-md-8">
-                        <label for="room_name">ชื่อ ห้องพัก</label>
+                      <div class="form-group col-md-8">
+                        <label for="room_name">ชื่อ ทัวร์</label>
                         <input type="text" name="room_name[en]" class="form-control" id="room_name" placeholder="" value="">
                       </div>
 
@@ -132,18 +149,10 @@
                         <label for="room_short">คำโปรย</label>
                         <textarea type="text" name="room_short[en]" class="form-control" id="room_short" placeholder=""></textarea>
                       </div>
-
-
-                      
-
-                     
                       <div class="form-group col-md-12">
                         <label for="room_description">ข้อมูล</label>
                         <textarea name="room_description[en]" class="form-control detail" id="room_description" placeholder="" rows="10"></textarea>
                       </div>
-
-                      
-
 
                       <div class="form-group col-md-12">
                         <label for="seo_title">SEO TITLE</label>
@@ -162,14 +171,41 @@
 
 
                     </div>
+
+                    <div role="tabpanel" class="tab-pane" id="promotion" style="padding-top: 10px;">
+
+                      <table class='table table-striped table-bordered'>
+                        <thead>
+                            <tr>
+                              <td>ราคา</td>
+                              <td>วันที่เริ่มต้น</td>
+                              <td>วันที่สิ้นสุด</td>
+                              <td>จัดการ</td>
+                            </tr>
+                        </thead>
+                        <tbody id='data'>
+
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="4" align="right">
+                              <a href="#" class='add-promotion btn btn-info btn-sm'><i class="fa fa-plus"> เพิ่ม</i></a>
+                            </td>
+                          </tr>
+                        </tfoot>
+
+                      </table>
+
+                    </div>
+
                   </div>
 
 
 
 
-                   
 
-                    
+
+
 
 
 

@@ -107,14 +107,44 @@
 
     <!-- fullCalendar 2.2.5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <script src="plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
 
 
     <script src="<?php echo base_url()?>assets/js/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url()?>assets/js/ckeditor/adapters/jquery.js"></script>
     <script>
-    $(function() {
 
+    $(function() {
+        var add_promotion = '<tr><td><input type="text" class="form-control" name="price[]" value=""/></td>';
+            add_promotion += '<td><input type="text" class="form-control date"  name="start_date[]" value=""/></td>';
+            add_promotion += '<td><input type="text" class="form-control date"  name="end_date[]" value=""/></td>';
+            add_promotion += '<td><a href="#" class="btn btn-sm btn-danger remove-data"><i class="fa fa-trash"></i></td></tr>';
+      $("a.add-promotion").on('click', function() {
+        $("tbody#data").append(add_promotion);
+        $('.date').daterangepicker({
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          singleDatePicker: true,
+          showDropdowns: true,
+        });
+
+        return false;
+      });
+
+      $('.date').daterangepicker({
+        locale: {
+          format: 'YYYY-MM-DD'
+        },
+        singleDatePicker: true,
+        showDropdowns: true,
+      });
+
+      $("tbody#data").on('click', 'a.remove-data', function() {
+        $(this).parent().parent().remove();
+        return false;
+      });
 
       $('#calendar').fullCalendar({
         header: {

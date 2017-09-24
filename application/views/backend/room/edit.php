@@ -3,13 +3,13 @@
         <!-- Content nameer (Page header) -->
         <section class="content-header">
           <h1>
-           ห้องพัก
-            <small>จัดการห้องพัก</small>
+           ทัวร์
+            <small>จัดการทัวร์</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?=site_url('backend');?>"><i class="fa fa-dashboard"></i> หน้าหลัก</a></li>
-            <li class=""><a href="<?=site_url('backend/room');?>">จัดการห้องพัก</a></li>
-            <li class="active">จัดการห้องพัก</li>
+            <li class=""><a href="<?=site_url('backend/room');?>">จัดการทัวร์</a></li>
+            <li class="active">จัดการทัวร์</li>
           </ol>
         </section>
 
@@ -23,7 +23,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">จัดการ ห้องพัก</h3>
+                  <h3 class="box-title">จัดการ ทัวร์</h3>
                 </div><!-- /.box-header -->
 
                     <?=form_open_multipart('backend/room/do_edit');?>
@@ -33,22 +33,23 @@
 
                   <div class="box-body">
 
-                  <ul class="nav nav-tabs" role="tablist">     
+                  <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">ข้อมูลหลัก</a></li>
                     <li role="presentation" class=""><a href="#th" aria-controls="th" role="tab" data-toggle="tab">ไทย</a></li>
                     <li role="presentation"><a href="#en" aria-controls="en" role="tab" data-toggle="tab">อังกฤษ</a></li>
+                    <li role="presentation"><a href="#promotion" aria-controls="en" role="tab" data-toggle="tab">Promotion</a></li>
                   </ul>
                    <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="other" style="padding-top: 10px;">
-                     
+
                      <div class="form-group col-md-6">
-                      <label for="room_no">เลขห้องพัก</label>
+                      <label for="room_no">เลขที่อ้างอิง</label>
                       <input type="text" name="room_no" class="form-control" id="room_no" placeholder="" value="<?=$r->room_no;?>">
                      </div>
                      <div class="form-group col-md-6">
-                        <label for="category_id">ประเภทห้องพัก</label>
+                        <label for="category_id">ประเภททัวร์</label>
                         <select type="text" name="category_id" class="form-control" id="category_id" placeholder="">
-                          <option value="">ประเภทห้อง</option>
+                          <option value="">ประเภท</option>
                           <?php foreach($category as $cat):
                           $lang = unserialize($cat->category_name);
 
@@ -59,13 +60,30 @@
                       </div>
 
                       <div class="form-group col-md-6">
+                         <label for="country_id">ประเทศ</label>
+                         <select type="text" name="country_id" class="form-control" id="country_id" placeholder="">
+                           <option value="">ประเทศ</option>
+                           <?php foreach($countries as $c):
+
+                           ?>
+                             <option value="<?=$c->num_code;?>" <?=$r->country_id==$c->num_code?' selected':'';?>><?=$c->nationality;?></option>
+                           <?php endforeach;?>
+                         </select>
+                       </div>
+
+                      <div class="form-group col-md-6">
                         <label for="room_price">ราคา</label>
                         <input type="text" name="room_price" class="form-control" id="room_price" placeholder="" value="<?=$r->room_price;?>">
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="room_total">จำนวนที่พักได้</label>
-                        <input type="text" name="room_total" class="form-control" id="room_total" placeholder="" value="<?=$r->room_total;?>">
+                        <label for="link">Link affiliate</label>
+                        <input type="text" name="link" class="form-control" id="link" placeholder="" value="<?php echo $r->link;?>">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="star">ดาว</label>
+                        <input type="text" name="star" class="form-control" id="star" placeholder="" value="<?php echo $r->star;?>">
                       </div>
 
                       <div class="form-group col-md-6">
@@ -75,7 +93,7 @@
                       </div>
 
                       <div class="form-group col-md-6">
-                      <label for="room_image">ภาพห้อง ( 270 x 228 )</label>
+                      <label for="room_image">ภาพ ( 270 x 228 )</label>
                        <?php if ($r->room_image!=''):?>
                         <img src="<?=base_url();?>public/upload/room/<?=$r->room_image;?>" style="width: 300px;" alt="">
                       <?php endif;?>
@@ -88,7 +106,7 @@
 
                     </div>
 
-                    <?php 
+                    <?php
                     $room_name = unserialize($r->room_name);
                     $room_short = unserialize($r->room_short);
                     $room_description = unserialize($r->room_description);
@@ -100,7 +118,7 @@
 
 
                       <div class="form-group col-md-8">
-                        <label for="room_name">ชื่อ ห้องพัก</label>
+                        <label for="room_name">ชื่อ ทัวร์</label>
                         <input type="text" name="room_name[th]" class="form-control" id="room_name" placeholder="" value="<?=$room_name['th'];?>">
                       </div>
 
@@ -110,15 +128,15 @@
                       </div>
 
 
-                      
 
-                     
+
+
                       <div class="form-group col-md-12">
                         <label for="room_description">ข้อมูล</label>
                         <textarea name="room_description[th]" class="form-control detail" id="room_description" placeholder="" rows="10"><?php echo $room_description['th'];?></textarea>
                       </div>
 
-                      
+
 
 
                       <div class="form-group col-md-12">
@@ -141,7 +159,7 @@
                     <div role="tabpanel" class="tab-pane" id="en" style="padding-top: 10px;">
 
                       <div class="form-group col-md-8">
-                        <label for="room_name">ชื่อ ห้องพัก</label>
+                        <label for="room_name">ชื่อ ทัวร์</label>
                         <input type="text" name="room_name[en]" class="form-control" id="room_name" placeholder="" value="<?=$room_name['en'];?>">
                       </div>
 
@@ -151,15 +169,15 @@
                       </div>
 
 
-                      
 
-                     
+
+
                       <div class="form-group col-md-12">
                         <label for="room_description">ข้อมูล</label>
                         <textarea name="room_description[en]" class="form-control detail" id="room_description" placeholder="" rows="10"><?=$room_description['en'];?></textarea>
                       </div>
 
-                      
+
 
 
                       <div class="form-group col-md-12">
@@ -179,18 +197,37 @@
 
 
                     </div>
+
+                    <div role="tabpanel" class="tab-pane" id="promotion" style="padding-top: 10px;">
+
+                      <table class='table table-striped table-bordered'>
+                        <thead>
+                            <tr>
+                              <td>ราคา</td>
+                              <td>วันที่เริ่มต้น</td>
+                              <td>วันที่สิ้นสุด</td>
+                              <td>จัดการ</td>
+                            </tr>
+                        </thead>
+                        <tbody id='data'>
+                          <?php foreach($promotion as $pm):?>
+                            <tr>
+                              <td><input type="text" name="price[]" value="<?php echo $pm->price;?>"></td>
+                            </tr>
+                          <?php endforeach;?>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="4" align="right">
+                              <a href="#" class='add-promotion btn btn-info btn-sm'><i class="fa fa-plus"> เพิ่ม</i></a>
+                            </td>
+                          </tr>
+                        </tfoot>
+
+                      </table>
+
+                    </div>
                   </div>
-
-
-
-
-                   
-
-                    
-
-
-
-
                   </div><!-- /.box-body -->
 
                     <div class="box-footer">

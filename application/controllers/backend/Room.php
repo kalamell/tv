@@ -14,6 +14,7 @@ class Room extends Backend_Controller {
     public function add()
     {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
+        $this->countries = $this->db->get('countries')->result();
         $this->_render('room/add', $this);
     }
 
@@ -21,6 +22,7 @@ class Room extends Backend_Controller {
     {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
         $this->r = $this->db->where('room_id', $room_id)->get('rooms')->row();
+        $this->promotion = $this->db->where('room_id', $room_id)->get('promotion')->result();
         $this->_render('room/edit', $this);
     }
 
@@ -88,6 +90,9 @@ class Room extends Backend_Controller {
                 'seo_title' => serialize($this->input->post('seo_title')),
                 'seo_keywords' => serialize($this->input->post('seo_keywords')),
                 'seo_description' => serialize($this->input->post('seo_description')),
+                'url' => $this->input->post('url'),
+                'star' => $this->input->post('star'),
+                'country_id' => $this->input->post('country_id'),
             ));
             $room_id = $this->db->insert_id();
 
@@ -103,6 +108,22 @@ class Room extends Backend_Controller {
                 $this->db->where('room_id', $room_id)->update('rooms', array(
                   'room_image' => $data['file_name'],
                 ));
+            }
+
+            if ($this->input->post('price')) {
+                $price = $this->input->post('price');
+                $start_date = $this->input->post('start_date');
+                $end_date = $this->input->post('end_date');
+                foreach($price as $inx => $val) {
+                    if (!is_null($val) && (float)$val>0) {
+                        $this->db->insert('promotion', array(
+                            'room_id' => $room_id,
+                            'price' => $val,
+                            'start_date' => $start_date[$inx],
+                            'end_date' => $end_date[$inx]
+                        ));
+                    }
+                }
             }
         }
         redirect('backend/room');
@@ -132,6 +153,9 @@ class Room extends Backend_Controller {
                 'seo_title' => serialize($this->input->post('seo_title')),
                 'seo_keywords' => serialize($this->input->post('seo_keywords')),
                 'seo_description' => serialize($this->input->post('seo_description')),
+                'url' => $this->input->post('url'),
+                'star' => $this->input->post('star'),
+                'country_id' => $this->input->post('country_id'),
             ));
             $room_id = $this->input->post('room_id');
 

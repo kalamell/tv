@@ -2,12 +2,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           ห้องพัก
-            <small>จัดการ ห้องพัก</small>
+           ทัวร์
+            <small>จัดการ ทัวร์</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?=site_url('backend');?>"><i class="fa fa-dashboard"></i> หน้าหลัก</a></li>
-            <li class="active">จัดการ ห้องพัก</li>
+            <li class="active">จัดการ ทัวร์</li>
           </ol>
         </section>
 
@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">จัดการ room</h3>
+                  <h3 class="box-title">จัดการ ทัวร์</h3>
                   <div class="box-tools">
                     <a href="<?=site_url('backend/room/add');?>" class="btn btn-sm btn-info"> เพิ่มข้อมูล</a>
                   </div>
@@ -30,10 +30,10 @@
                   <table class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <td>ชื่อห้อง</td>
-                        <td>เลขที่ห้อง</td>
-                        <td width="300">ภาพ room</td>
-                        <td>ประเภทห้อง</td>
+                        <td>ชื่อแพ็คเกจทัวร์</td>
+                        <td>รหัสอ้างอิง</td>
+                        <td width="300">ภาพ</td>
+                        <td>ประเภท</td>
                         <td>Gallery</td>
                         <td>แสดงผล</td>
                         <td width="150">Tools</td>

@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
+    <link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+
     <!-- fullCalendar 2.2.5-->
     <link href="plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
     <link href="plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
