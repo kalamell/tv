@@ -22,7 +22,7 @@
                 <div class="box-header">
                   <h3 class="box-title">จัดการ ทัวร์</h3>
                   <div class="box-tools">
-                    <a href="<?=site_url('backend/room/add');?>" class="btn btn-sm btn-info"> เพิ่มข้อมูล</a>
+                    <a href="<?=site_url('backend/tour/add');?>" class="btn btn-sm btn-info"> เพิ่มข้อมูล</a>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -51,15 +51,15 @@
                             <tr>
                               <td><?=$room_name['th'];?></td>
                               <td><?=$r->room_no;?></td>
-                              <td><img src="<?=base_url();?>public/upload/room/<?=$r->room_image;?>" class="img-responsive"/></td>
-                              <td><?php 
+                              <td><img src="<?=base_url();?>public/upload/tour/<?=$r->room_image;?>" class="img-responsive"/></td>
+                              <td><?php
                               $cat = unserialize($r->category_name); echo $cat['th'];?></td>
-                              <td><a class="btn btn-sm btn-default" href="<?=site_url('backend/room/gallery/'.$r->room_id);?>">Gallery</a></td>
+                              <td><a class="btn btn-sm btn-default" href="<?=site_url('backend/tour/gallery/'.$r->room_id);?>">Gallery</a></td>
                               <td><?=$r->room_status;?></td>
 
                               <td>
-                                <a class="btn btn-sm btn-info" href="<?=site_url('backend/room/edit/'.$r->room_id);?>">Edit</a>
-                                <a class="btn btn-sm btn-default" href="<?=site_url('backend/room/delete/'.$r->room_id);?>" onclick="javascript:return confirm('คุณต้องการลบหรือไม่ ?')">Delete</a>
+                                <a class="btn btn-sm btn-info" href="<?=site_url('backend/tour/edit/'.$r->room_id);?>">Edit</a>
+                                <a class="btn btn-sm btn-default" href="<?=site_url('backend/tour/delete/'.$r->room_id);?>" onclick="javascript:return confirm('คุณต้องการลบหรือไม่ ?')">Delete</a>
                               </td>
                             </tr>
                             <?php

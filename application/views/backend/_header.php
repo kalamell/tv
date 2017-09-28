@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="#"><i class='fa fa-hotel'></i> <span>จัดการทัวร์</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?=site_url('backend/category');?>">ประเภททัวร์</a></li>
-                <li><a href="<?=site_url('backend/room');?>">ชื่อทัวร์</a></li>
+                <li><a href="<?=site_url('backend/tour');?>">ชื่อทัวร์</a></li>
               </ul>
             </li>
 

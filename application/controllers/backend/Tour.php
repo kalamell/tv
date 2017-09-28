@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Room extends Backend_Controller {
+class Tour extends Backend_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -9,13 +9,13 @@ class Room extends Backend_Controller {
     public function index()
     {
         $this->rs = $this->db->join('category', 'rooms.category_id = category.category_id', 'LEFT')->get('rooms')->result();
-        $this->_render('room/index', $this);
+        $this->_render('tour/index', $this);
     }
     public function add()
     {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
         $this->countries = $this->db->order_by('en_short_name', 'ASC')->get('countries')->result();
-        $this->_render('room/add', $this);
+        $this->_render('tour/add', $this);
     }
 
     public function edit($room_id)
@@ -24,29 +24,29 @@ class Room extends Backend_Controller {
         $this->r = $this->db->where('room_id', $room_id)->get('rooms')->row();
         $this->promotion = $this->db->where('room_id', $room_id)->get('promotion')->result();
         $this->countries = $this->db->order_by('en_short_name', 'ASC')->get('countries')->result();
-        $this->_render('room/edit', $this);
+        $this->_render('tour/edit', $this);
     }
 
     public function gallery($room_id)
     {
         $this->r = $this->db->where('room_id', $room_id)->get('rooms')->row();
         $this->gallery =  $this->db->where('room_id', $room_id)->get('gallery')->result();
-        $this->_render('room/gallery', $this);
+        $this->_render('tour/gallery', $this);
     }
 
     public function delete_gallery($room_id, $gallery_id)
     {
         $this->db->where('gallery_id', $gallery_id)->delete('gallery');
-        redirect('backend/room/gallery/'.$room_id);
+        redirect('backend/tour/gallery/'.$room_id);
     }
 
     public function do_gallery()
     {
         $this->load->library('upload');
         $config = array(
-          'upload_path' => './public/upload/room/',
+          'upload_path' => './public/upload/tour/',
           'allowed_types' => 'jpg|jpeg|png|gif',
-          'file_name' => 'room-gallery-'.time(),
+          'file_name' => 'tour-gallery-'.time(),
         );
         $this->upload->initialize($config);
         if ($this->upload->do_upload('gallery_path')) {
@@ -56,14 +56,14 @@ class Room extends Backend_Controller {
               'room_id' => $this->input->post('room_id')
             ));
         }
-        redirect('backend/room/gallery/'.$this->input->post('room_id'));
+        redirect('backend/tour/gallery/'.$this->input->post('room_id'));
 
     }
 
     public function delete($id)
     {
         $this->db->where('room_id', $id)->delete('rooms');
-        redirect('backend/room');
+        redirect('backend/tour');
     }
 
 
@@ -101,9 +101,9 @@ class Room extends Backend_Controller {
 
             $this->load->library('upload');
             $config = array(
-              'upload_path' => './public/upload/room/',
+              'upload_path' => './public/upload/tour/',
               'allowed_types' => 'jpg|jpeg|png|gif',
-              'file_name' => 'room-main-'.$room_id,
+              'file_name' => 'tour-main-'.$room_id,
             );
             $this->upload->initialize($config);
             if ($this->upload->do_upload('room_image')) {
@@ -129,7 +129,7 @@ class Room extends Backend_Controller {
                 }
             }
         }
-        redirect('backend/room');
+        redirect('backend/tour');
     }
 
     public function do_edit()
@@ -165,9 +165,9 @@ class Room extends Backend_Controller {
 
             $this->load->library('upload');
             $config = array(
-              'upload_path' => './public/upload/room/',
+              'upload_path' => './public/upload/tour/',
               'allowed_types' => 'jpg|jpeg|png|gif',
-              'file_name' => 'room-main-'.$room_id,
+              'file_name' => 'tour-main-'.$room_id,
             );
             $this->upload->initialize($config);
             if ($this->upload->do_upload('room_image')) {
@@ -177,6 +177,6 @@ class Room extends Backend_Controller {
                 ));
             }
         }
-        redirect('backend/room');
+        redirect('backend/tour');
     }
 }
