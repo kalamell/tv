@@ -483,7 +483,34 @@ function isMemberLogin()
 function lang()
 {
     $ci =& get_instance();
-    $lang = $ci->session->userdata('lang');    
+    $lang = $ci->session->userdata('lang');
     $lang = $lang=='th'?'th':'en';
     return $lang;
+}
+
+function getPromotionBanner()
+{
+    $ci =& get_instance();
+    $rs = $ci->db->order_by('content_id', 'DESC')
+    ->join('rooms', 'content.room_id = rooms.room_id', 'LEFT')
+    ->where('content_type', 'promotion')
+    ->limit(3)
+    ->get('content')->result();
+
+    return $rs;
+}
+
+function getLink($room_id)
+{
+    $ci =& get_instance();
+    $rs = $ci->db->where('room_id', $room_id)->get('rooms');
+    if ($rs->num_rows()==0) {
+        return site_url();
+    } else {
+        if ($rs->row()->link!='') {
+            return $rs->row()->link;
+        } else {
+            return site_url('tour/id/'.$room_id);
+        }
+    }
 }

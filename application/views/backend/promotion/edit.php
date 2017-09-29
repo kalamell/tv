@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label for="content_path">ภาพประกอบ ( 990 x 540 )</label>
+              <label for="content_path">ภาพประกอบ ( 370 x 154 )</label>
               <br>
               <?php
               if ($r->content_path!=''):
@@ -59,6 +59,12 @@
           <?php endif;?>
               <input type="file" name="content_path" class="form-control" id="content_path" placeholder="" value="">
             </div>
+
+            <div class="checkbox col-md-6">
+                <label>
+                  <input type="checkbox" name="recommend" value="1" <?php echo $r->recommend==1?' checked':'';?>> Best Package
+                </label>
+              </div>
 
 
 

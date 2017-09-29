@@ -37,6 +37,19 @@
                       <input type="text" name="content_name" class="form-control" id="content_name" placeholder="" value="">
                     </div>
 
+                    <div class="form-group col-md-6">
+                       <label for="room_id">Tour</label>
+                       <select type="text" name="room_id" class="form-control" id="room_id" placeholder="">
+                         <option value="">เลือก Tour ที่ต้องการ</option>
+                         <?php foreach($rs as $_r):
+                         $lang = unserialize($_r->room_name);
+
+                         ?>
+                           <option value="<?=$_r->room_id;?>"><?=$lang['th'];?></option>
+                         <?php endforeach;?>
+                       </select>
+                     </div>
+
                     <div class="form-group col-md-12">
                       <label for="content_short">คำโปรย</label>
                       <textarea type="text" name="content_short" class="form-control" id="content_short" placeholder=""></textarea>
@@ -48,9 +61,15 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                      <label for="content_path">ภาพประกอบ ( 990 x 540 )</label>
+                      <label for="content_path">ภาพประกอบ ( 370 x 154 )</label>
                       <input type="file" name="content_path" class="form-control" id="content_path" placeholder="" value="">
                     </div>
+
+                    <div class="checkbox col-md-6">
+                        <label>
+                          <input type="checkbox" name="recommend" value="1"> Best Package
+                        </label>
+                      </div>
 
 
 

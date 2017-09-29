@@ -31,6 +31,7 @@
                     <thead>
                       <tr>
                         <td>ชื่อ Promotion</td>
+                        <th>Package ที่เกี่ยวข้อง</th>
                         <td>วันที่</td>
                         <td width="150">Tools</td>
                       </tr>
@@ -44,7 +45,21 @@
                           foreach ($rs as $r) {
                             ?>
                             <tr>
-                              <td><?=$r->content_name;?></td>
+                              <td><?=$r->content_name;?>
+                                <?php if($r->content_path !=''):?>
+                                  <img src="<?php echo base_url();?>public/upload/content/<?php echo $r->content_path;?>" class='img-responsive' alt="">
+                                <?php endif;?>
+                              </td>
+                              <td>
+                                <?php
+                                if ($r->room_id!=null) {
+                                  $room_name = unserialize($r->room_name);
+                                  echo $room_name['th'];
+                                } else {
+                                  echo '-';
+                                }
+                                ?>
+                              </td>
                               <td><?=$r->create_date;?></td>
 
                               <td>

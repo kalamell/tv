@@ -8,17 +8,22 @@ class Promotion extends Backend_Controller {
     }
     public function index()
     {
-       $this->rs = $this->db->order_by('content_id', 'DESC')->where('content_type', 'promotion')->get('content')->result();
+       $this->rs = $this->db->order_by('content_id', 'DESC')
+       ->join('rooms', 'content.room_id = rooms.room_id', 'LEFT')
+       ->where('content_type', 'promotion')
+       ->get('content')->result();
         $this->_render('promotion/index', $this);
     }
     public function add()
     {
-        $this->_render('promotion/add');
+        $this->rs = $this->db->get('rooms')->result();
+        $this->_render('promotion/add', $this);
     }
 
     public function edit($content_id)
     {
         $this->category = $this->db->select('category_id, category_name')->get('category')->result();
+        $this->rs = $this->db->get('rooms')->result();
         $this->r = $this->db->where('content_id', $content_id)->get('content')->row();
         $this->_render('promotion/edit', $this);
     }
@@ -26,7 +31,7 @@ class Promotion extends Backend_Controller {
     public function delete($id)
     {
         $this->db->where('content_id', $id)->delete('content');
-        redirect('backend/content');
+        redirect('backend/promotion');
     }
 
 
@@ -46,7 +51,9 @@ class Promotion extends Backend_Controller {
                 'content_name' => $this->input->post('content_name'),
                 'content_short' => $this->input->post('content_short'),
                 'content_description' => $this->input->post('content_description'),
-                'content_type' => 'promotion'
+                'content_type' => 'promotion',
+                'room_id' => $this->input->post('room_id'),
+                'recommend' => $this->input->post('recommend'),
             ));
             $content_id = $this->db->insert_id();
 
@@ -64,7 +71,7 @@ class Promotion extends Backend_Controller {
                 ));
             }
         }
-        redirect('backend/content');
+        redirect('backend/promotion');
     }
 
     public function do_edit()
@@ -83,7 +90,9 @@ class Promotion extends Backend_Controller {
                 'content_name' => $this->input->post('content_name'),
                 'content_short' => $this->input->post('content_short'),
                 'content_description' => $this->input->post('content_description'),
-                'content_type' => 'promotion'
+                'content_type' => 'promotion',
+                'room_id' => $this->input->post('room_id'),
+                'recommend' => $this->input->post('recommend'),
             ));
             $content_id = $this->input->post('content_id');
 
@@ -101,6 +110,6 @@ class Promotion extends Backend_Controller {
                 ));
             }
         }
-        redirect('backend/content');
+        redirect('backend/promotion');
     }
 }

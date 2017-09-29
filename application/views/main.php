@@ -289,8 +289,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="places">
-				<h1>MOst popular places</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a suscipit quam, ut vestibulum lorem.</p>
+				<h1><?php echo line('MOST POPULAR PLACES');?></h1>
+				<p><?php echo line('desc most pop');?></p>
 				<hr>
 				<ul class="nav nav-tabs list-inline">
 					<li class="active">
@@ -312,7 +312,7 @@
 							<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
 								<div class="product-thumb">
 									<div class="image">
-										<a href="<?php echo $rm->link;?>"><img src="<?=base_url();?>public/upload/room/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
+										<a href="<?php echo getLink($rm->room_id);?>"><img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
 										<div class="hoverbox">
 											<div class="icon_plus" aria-hidden="true"></div>
 										</div>
@@ -320,7 +320,8 @@
 											<h2><?php echo $name[$lang];?></h2>
 											<p><?php echo line('start from');?> <?=$rm->room_price;?> <?php echo line('bath');?></p>
 											<ul class="list-inline">
-												<li><a href="<?php echo $rm->link;?>">hotels deals </a></li>
+												<li><a href="<?php echo getLink($rm->room_id);?>">hotels deals </a></li>
+												<li><a href="<?php echo getLink($rm->room_id);?>"><?php echo line('book now');?> </a></li>
 											</ul>
 										</div>
 									</div>
@@ -368,7 +369,8 @@
 								<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
 									<div class="product-thumb">
 										<div class="image">
-											<a href="<?php echo $rm->link;?>"><img src="<?=base_url();?>public/upload/room/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
+											<a href="<?php echo getLink($rm->room_id);?>">
+												<img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
 											<div class="hoverbox">
 												<div class="icon_plus" aria-hidden="true"></div>
 											</div>
@@ -376,7 +378,7 @@
 												<h2><?php echo $name[$lang];?></h2>
 												<p><?php echo line('start from');?> <?=$rm->room_price;?> <?php echo line('bath');?></p>
 												<ul class="list-inline">
-													<li><a href="<?php echo $rm->link;?>">hotels deals </a></li>
+													<li><a href="<?php echo getLink($rm->room_id);?>">hotels deals </a></li>
 												</ul>
 											</div>
 										</div>
@@ -425,23 +427,6 @@
 <!-- places end here -->
 
 
-<!-- video start here -->
-<div class="video">
-	<img src="images/video-bg.jpg" class="img-responsive" alt="video-bg" title="video-bg" />
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="matter text-center">
-					<i class="fa fa-play" aria-hidden="true"></i>
-					<h5>Awesome Experiences for</h5>
-					<h6>Tourism & Traveling.</h6>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- video end here -->
-
 
 <!-- categories start here -->
 <div class="placetop">
@@ -466,6 +451,63 @@
 				</ul>
 			</div>
 			<div class="tab-content tour">
+				<?php $i = 1; foreach($category as $cat):
+					$lang = $this->session->userdata('lang')?$this->session->userdata('lang'):'en';
+					$txt = unserialize($cat->category_name);
+				?>
+					<div class="tab-pane <?php echo $i==1?'active':'';?>" id="<?php echo strtolower($txt['en']);?>">
+					<?php foreach($rooms as $rm):?>
+						<?php if ($rm->category_id == $cat->category_id):
+						$lang = lang();
+						$name  =unserialize($rm->room_name);
+						$short = unserialize($rm->room_short);
+						$room_short = $short[$lang];
+						?>
+						<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+							<div class="product-thumb">
+								<div class="image">
+									<a href="<?php echo getLink($rm->room_id);?>">
+										<img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" />
+									</a>
+									<div class="hoverbox">
+										<div class="icon_plus" aria-hidden="true"></div>
+									</div>
+									<div class="matter">
+										<p><?=$rm->room_price;?> <?php echo line('bath');?></p>
+									</div>
+								</div>
+								<div class="caption">
+									<div class="inner">
+										<h4><?php echo $name[$lang];?></h4>
+										<div class="rate">
+											<div class="pull-left">
+												<span>HOT DEALS</span>
+											</div>
+											<div class="pull-right">
+												<i class="fa fa-star" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+												<i class="fa fa-star" aria-hidden="true"></i>
+												<i class="fa fa-star-half-o" aria-hidden="true"></i>
+											</div>
+										</div>
+										<p><?php echo $room_short;?></p>
+									</div>
+									<div class="text-left">
+										<button type="button" onclick="location.href='<?php echo site_url('tour/id/'.$rm->room_id);?>'"><?php echo line('book now');?> <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+										<button type="button" onclick="location.href='<?php echo site_url('tour/id/'.$rm->room_id);?>'">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<?php endif;?>
+					<?php $i++; endforeach;?>
+
+					</div>
+				<?php endforeach;?>
+
+<!--
 				<div class="tab-pane active" id="hotels">
 					<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
 						<div class="product-thumb">
@@ -496,7 +538,7 @@
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum, dolor sit amet luctus phare-tra, turpis lacus rhoncus ipsum...</p>
 								</div>
 								<div class="text-left">
-									<button type="button" onclick="location.href='tour-booking-form.html'">Book Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+									<button type="button" onclick="location.href='<?php echo site_url('tour/id/'.$rm->room_id);?>'">Book Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
 									<button type="button" onclick="location.href='tour-grid-view.html'">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
 								</div>
 							</div>
@@ -1013,9 +1055,11 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="text-center">
-					<button class="btn-primary" type="button" onclick="location.href='tour-grid-view.html'">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+-->
+				<div class='col-md-12'>
+					<div class="text-center">
+						<button class="btn-primary" type="button" onclick="location.href='tour-grid-view.html'">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1137,7 +1181,7 @@
 <!-- testimonail end here -->
 
 <!-- gallery start here -->
-<div class="placetop">
+<div class="placetop" style="display: none;">
 	<div class="container">
 		<div class="row">
 			<div class="places">
@@ -1848,262 +1892,8 @@
 <!-- gallery end here -->
 
 
-<!-- blog start here -->
-<div class="blog">
-	<div class="container">
-		<div class="row">
-			<div class="places">
-				<h1>our blog</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a suscipit quam, ut vestibulum lorem.</p>
-				<hr>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/blog1.jpg" alt="blog1" title="blog1" class="img-responsive" /></a>
-						<div class="hoverbox">
-							<div class="icon_plus" aria-hidden="true"></div>
-						</div>
-						<div class="matter">
-							<ul class="list-inline">
-								<li><a href="#">26 Dec 2016</a></li>
-								<li><a href="#">by john doe </a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="caption">
-						<div class="inner">
-							<h4>Awesome Blog Post Title</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum, dolor sit amet luctus phare-tra, turpis lacus rhoncus ipsum...</p>
-						</div>
-						<div class="text-center">
-							<button type="button" onclick="location.href='blog.html'">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/blog1.jpg" alt="blog1" title="blog1" class="img-responsive" /></a>
-						<div class="hoverbox">
-							<div class="icon_plus" aria-hidden="true"></div>
-						</div>
-						<div class="matter">
-							<ul class="list-inline">
-								<li><a href="#">26 Dec 2016</a></li>
-								<li><a href="#">by john doe </a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="caption">
-						<div class="inner">
-							<h4>Awesome Blog Post Title</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum, dolor sit amet luctus phare-tra, turpis lacus rhoncus ipsum...</p>
-						</div>
-						<div class="text-center">
-							<button type="button" onclick="location.href='blog.html'">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/blog1.jpg" alt="blog1" title="blog1" class="img-responsive" /></a>
-						<div class="hoverbox">
-							<div class="icon_plus" aria-hidden="true"></div>
-						</div>
-						<div class="matter">
-							<ul class="list-inline">
-								<li><a href="#">26 Dec 2016</a></li>
-								<li><a href="#">by john doe </a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="caption">
-						<div class="inner">
-							<h4>Awesome Blog Post Title</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum, dolor sit amet luctus phare-tra, turpis lacus rhoncus ipsum...</p>
-						</div>
-						<div class="text-center">
-							<button type="button" onclick="location.href='blog.html'">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-<!-- blog end here -->
-
-<!-- news start here -->
-<div class="news">
-	<img src="images/subscribe-bg.jpg" class="img-responsive sub" alt="subscribe-bg" title="subscribe-bg" />
-	<div class="newsinner">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/foot-banner1.png" alt="foot-banner1" title="foot-banner1" class="img-responsive" /></a>
-						<div class="hoverbox"></div>
-						<div class="matter">
-							<p class="des"><span class="icon_building_alt"></span> Hotel</p>
-							<button type="button"> Booking Now</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/foot-banner1.png" alt="foot-banner1" title="foot-banner1" class="img-responsive" /></a>
-						<div class="hoverbox"></div>
-						<div class="off">
-							<span>Best Packages</span>
-						</div>
-						<div class="matter">
-							<p class="des1">$1000 <span>Package</span> to <small>Dubai</small></p>
-							<button type="button"> Booking Now</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="product-thumb">
-					<div class="image">
-						<a href="#"><img src="images/foot-banner1.png" alt="foot-banner1" title="foot-banner3" class="img-responsive" /></a>
-						<div class="hoverbox"></div>
-						<div class="matter">
-							<p class="des2"><i class="icon_percent_alt"></i> 25% off<br> to <span>Island</span></p>
-							<button type="button"> Booking Now</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-sm-12">
-				<form class="subscribe">
-					<div class="form-group">
-						<div class="input-group">
-							<label><?php echo line('subscribe');?></label>
-							<input placeholder="" name="subscribe_email" value="" type="text">
-							<button class="btn btn-default btn-lg" type="submit"><?php echo line('Subscribe Now');?></button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
-<!-- news end here -->
-
-<!-- footer start here -->
-<footer>
-	<div class="container">
-		<div class="row padd-b">
-			<div class="col-sm-3">
-
-				<img class="img-responsive" src="<?php echo site_url('public/upload/'.get_logo());?>" alt="logo" title="logo" />
-				<p class="des"><?php echo get_slogan();?></p>
-			</div>
-			<div class="col-sm-offset-6 col-sm-3 contact">
-				<h3>Contact us</h3>
-				<ul class="list-inline">
-					<li>
-						<div class="inner"><i class="fa fa-home" aria-hidden="true"></i> <?php echo line('address');?></div>
-						<div class="in"><a href="#"> : <?php echo get_address();?></a></div>
-					</li>
-					<li>
-						<div class="inner"><i class="fa fa-phone" aria-hidden="true"></i><?php echo line('Phone no');?></div>
-						<div class="in"><a href="tel:<?php echo get_mobile();?>"> : <?php echo get_mobile();?></a></div>
-					</li>
-					<li>
-						<div class="inner"><i class="fa fa-envelope" aria-hidden="true"></i>Email</div>
-						<div class="in"><a href="mailto:<?php echo get_email();?>"> : <?php echo get_email();?></a></div>
-						<br>
-						<div class="inner paddleft">website</div>
-						<div class="in"><a href="<?php echo site_url();?>">  : <?php echo site_url();?></a></div>
-					</li>
-				</ul>
-			</div>
-			<!--<div class="col-sm-3 info">
-				<h3>Information</h3>
-				<ul class="list-inline">
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Home</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>My Account</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>About</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Packages</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Gallery</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Best Offers</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Hotels</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Best Places</a></li>
-					<li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog</a></li>
-				</ul>
-			</div>
-		-->
-			<!--<div class="col-sm-3 insta">
-				<h3>Instagram</h3>
-				<ul class="list-inline">
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-					<li><img src="images/ins1.jpg" class="img-responsive" title="ins1" alt="ins1" /></li>
-				</ul>
-			</div>-->
-		</div>
-
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="powered">
-					<div class="col-sm-6 padd0">
-						<p><?php echo get_footer();?></p>
-					</div>
-					<div class="col-sm-6 padd0 text-right">
-						<div class="social-icon">
-							<ul class="list-inline">
-								<?php if (get_facebook()):?>
-								<li>
-									<a href="<?php echo get_facebook();?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-								</li>
-								<?php endif;?>
-
-								<?php if (get_twitter()):?>
-								<li>
-									<a href="<?php echo get_twitter();?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-								</li>
-								<?php endif;?>
-
-								<?php if (get_google()):?>
-								<li>
-									<a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-								</li>
-								<?php endif;?>
-
-								<?php if (get_ig()):?>
-								<li>
-									<a href="<?php echo get_ig();?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-								</li>
-							<?php endif;?>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-<!-- footer end here -->
+<?php $this->load->view('_footer');?>
 
 <!-- jquery -->
 <script src="js/jquery.2.1.1.min.js" type="text/javascript"></script>

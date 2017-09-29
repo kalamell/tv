@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Sep 24, 2017 at 11:32 PM
+-- Generation Time: Sep 29, 2017 at 03:05 AM
 -- Server version: 10.1.26-MariaDB-1~jessie
 -- PHP Version: 7.0.16
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`, `name`, `last_login`) VALUES
-(1, 'admin', '6e6fba1ecf298599dc4f9701373d28472822bb27', 'Admin', '2017-09-24 21:53:18');
+(1, 'admin', '6e6fba1ecf298599dc4f9701373d28472822bb27', 'Admin', '2017-09-29 01:55:50');
 
 -- --------------------------------------------------------
 
@@ -214,9 +214,19 @@ CREATE TABLE `content` (
   `create_date` datetime NOT NULL,
   `content_path` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content_type` enum('content','promotion') COLLATE utf8_unicode_ci NOT NULL,
-  `tour_id` int(11) DEFAULT NULL,
-  `link` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `room_id` int(11) DEFAULT NULL,
+  `link` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `recommend` int(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `content`
+--
+
+INSERT INTO `content` (`content_id`, `content_name`, `content_short`, `content_description`, `create_date`, `content_path`, `content_type`, `room_id`, `link`, `recommend`) VALUES
+(3, 'ทัวร์สิงคโปร์', '', '', '2017-09-29 02:10:55', 'content-main-3.png', 'promotion', 10, NULL, NULL),
+(4, 'ดูไบ', '', '', '2017-09-29 02:16:37', 'content-main-4.png', 'promotion', 11, NULL, 1),
+(5, 'ทิปสิงคโปร์', '', '', '2017-09-29 02:17:35', 'content-main-5.png', 'promotion', 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -617,7 +627,11 @@ INSERT INTO `lang_static` (`id`, `name`, `data`) VALUES
 (69, 'subscribe', 'a:2:{s:2:\"th\";s:72:\"ติดตามเราเพื่อรับข่าวสาร\";s:2:\"en\";s:27:\"SUBSCRIBE TO OUR NEWSLETTER\";}'),
 (70, 'Subscribe Now', 'a:2:{s:2:\"th\";s:18:\"ยืนยัน\";s:2:\"en\";s:13:\"Subscribe Now\";}'),
 (71, 'book now by categories', 'a:2:{s:2:\"th\";s:81:\"เลือกหมวดหมู่ที่ท่านต้องการ\";s:2:\"en\";s:22:\"book now by categories\";}'),
-(72, 'choose book now by categories', 'a:2:{s:2:\"th\";s:159:\"ท่านสามารถเลือกทัวร์ที่เหมาะสมกับการท่องเที่ยงของท่าน\";s:2:\"en\";s:37:\"you can choose book now by categories\";}');
+(72, 'choose book now by categories', 'a:2:{s:2:\"th\";s:159:\"ท่านสามารถเลือกทัวร์ที่เหมาะสมกับการท่องเที่ยงของท่าน\";s:2:\"en\";s:37:\"you can choose book now by categories\";}'),
+(73, 'Best Packages', 'a:2:{s:2:\"th\";s:21:\"ยอดนิยม\";s:2:\"en\";s:13:\"Best Packages\";}'),
+(74, 'book now', 'a:2:{s:2:\"th\";s:18:\"จองเลย\";s:2:\"en\";s:8:\"Book Now\";}'),
+(75, 'MOST POPULAR PLACES', 'a:2:{s:2:\"th\";s:45:\"แพ็คเกจที่โดนใจ\";s:2:\"en\";s:19:\"MOST POPULAR PLACES\";}'),
+(76, 'desc most pop', 'a:2:{s:2:\"th\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";s:2:\"en\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";}');
 
 -- --------------------------------------------------------
 
@@ -697,8 +711,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `category_id`, `room_no`, `room_name`, `room_short`, `room_description`, `room_price`, `room_total`, `room_status`, `room_image`, `seo_title`, `seo_keywords`, `seo_description`, `link`, `star`, `country_id`, `deal`, `use_view`) VALUES
-(10, 2, '0001-60', 'a:2:{s:2:\"th\";s:33:\"ทิปสิงคโปร์\";s:2:\"en\";s:14:\"Singapore Trip\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:1080:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์\";s:2:\"en\";s:245:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\";}', 35000, NULL, 'Y', 'room-main-101.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', '', 4, 702, 'hot', 0),
-(11, 1, '0002-60', 'a:2:{s:2:\"th\";s:39:\"นิวยอร์คซิตี้\";s:2:\"en\";s:13:\"New York City\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 69000, NULL, 'Y', 'room-main-11.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', NULL, 4, 840, 'hotel', 0);
+(10, 2, '0001-60', 'a:2:{s:2:\"th\";s:33:\"ทิปสิงคโปร์\";s:2:\"en\";s:14:\"Singapore Trip\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:1080:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์\";s:2:\"en\";s:245:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\";}', 35000, NULL, 'Y', 'tour-main-101.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', '', 4, 702, 'hot', 0),
+(11, 1, '0002-60', 'a:2:{s:2:\"th\";s:39:\"นิวยอร์คซิตี้\";s:2:\"en\";s:13:\"New York City\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 69000, NULL, 'Y', 'tour-main-11.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', NULL, 4, 840, 'hotel', 0);
 
 -- --------------------------------------------------------
 
@@ -797,7 +811,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
@@ -812,7 +826,7 @@ ALTER TABLE `ipn_listen`
 -- AUTO_INCREMENT for table `lang_static`
 --
 ALTER TABLE `lang_static`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `member`
 --
