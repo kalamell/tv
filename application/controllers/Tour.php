@@ -1,10 +1,15 @@
 <?php
-class Room extends Base_Controller
+class Tour extends Base_Controller
 {
     public function __construct()
     {
         parent::__construct();
     }
+    public function id($id)
+    {
+
+    }
+
     public function item($id, $room_url)
     {
         $this->session->set_userdata('url', current_url());
