@@ -84,7 +84,7 @@ Username:	poszeeco_travel
 Password:	OggIvL3Z
 
 */
-$active_group = 'host';
+$active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
