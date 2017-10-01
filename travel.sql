@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Sep 29, 2017 at 03:05 AM
+-- Generation Time: Oct 01, 2017 at 04:18 PM
 -- Server version: 10.1.26-MariaDB-1~jessie
 -- PHP Version: 7.0.16
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`, `name`, `last_login`) VALUES
-(1, 'admin', '6e6fba1ecf298599dc4f9701373d28472822bb27', 'Admin', '2017-09-29 01:55:50');
+(1, 'admin', '6e6fba1ecf298599dc4f9701373d28472822bb27', 'Admin', '2017-10-01 04:08:18');
 
 -- --------------------------------------------------------
 
@@ -171,15 +171,16 @@ CREATE TABLE `config` (
   `longtitude` double DEFAULT NULL,
   `address` longtext COLLATE utf8_unicode_ci,
   `slogan` longtext COLLATE utf8_unicode_ci,
-  `paypal_email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `paypal_email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `about` longtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `config`
 --
 
-INSERT INTO `config` (`title`, `description`, `keywords`, `footer`, `logo`, `email`, `mobile`, `facebook`, `google`, `ig`, `twitter`, `auto_verify`, `line`, `latitude`, `longtitude`, `address`, `slogan`, `paypal_email`) VALUES
-('a:2:{s:2:\"th\";s:18:\"Royal Inter Travel\";s:2:\"en\";s:18:\"Royal Inter Travel\";}', 'a:2:{s:2:\"th\";s:6:\"Travel\";s:2:\"en\";s:6:\"Travel\";}', 'a:2:{s:2:\"th\";s:6:\"Travel\";s:2:\"en\";s:6:\"Travel\";}', 'a:2:{s:2:\"th\";s:25:\"©2017 Royal Inter Travel\";s:2:\"en\";s:25:\"©2017 Royal Inter Travel\";}', 'logo1.png', 'sankhumpha84@gmail.com', '090-9740465', 'https://www.facebook.com/', 'https://plus.google.com/', 'https://www.instagram.com/', 'https://twitter.com/?lang=en', 0, 'https://line.me/R/ti/p/%40fma8166c', 12.864549, 99.693375, 'a:2:{s:2:\"th\";s:107:\"299/36 หมู่1 ต.แคราย อ.กระทุ่มแบน จ.สมุทรสาคร\";s:2:\"en\";s:51:\"299 / 36 M.1 Kaerai Kathumban Samutsakhon  Thailand\";}', 'a:2:{s:2:\"th\";s:112:\"เราย่อโลกอยู่ไว้ในมือคุณ ทุกการเดินทาง\";s:2:\"en\";s:117:\"ENG. เราย่อโลกอยู่ไว้ในมือคุณ ทุกการเดินทาง\";}', 'sankhumpha84-facilitator@gmail.com');
+INSERT INTO `config` (`title`, `description`, `keywords`, `footer`, `logo`, `email`, `mobile`, `facebook`, `google`, `ig`, `twitter`, `auto_verify`, `line`, `latitude`, `longtitude`, `address`, `slogan`, `paypal_email`, `about`) VALUES
+('a:2:{s:2:\"th\";s:18:\"Royal Inter Travel\";s:2:\"en\";s:18:\"Royal Inter Travel\";}', 'a:2:{s:2:\"th\";s:6:\"Travel\";s:2:\"en\";s:6:\"Travel\";}', 'a:2:{s:2:\"th\";s:6:\"Travel\";s:2:\"en\";s:6:\"Travel\";}', 'a:2:{s:2:\"th\";s:25:\"©2017 Royal Inter Travel\";s:2:\"en\";s:25:\"©2017 Royal Inter Travel\";}', 'logo1.png', 'sankhumpha84@gmail.com', '090-9740465', 'https://www.facebook.com/', 'https://plus.google.com/', 'https://www.instagram.com/', 'https://twitter.com/?lang=en', 0, 'https://line.me/R/ti/p/%40fma8166c', 12.864549, 99.693375, 'a:2:{s:2:\"th\";s:107:\"299/36 หมู่1 ต.แคราย อ.กระทุ่มแบน จ.สมุทรสาคร\";s:2:\"en\";s:51:\"299 / 36 M.1 Kaerai Kathumban Samutsakhon  Thailand\";}', 'a:2:{s:2:\"th\";s:112:\"เราย่อโลกอยู่ไว้ในมือคุณ ทุกการเดินทาง\";s:2:\"en\";s:117:\"ENG. เราย่อโลกอยู่ไว้ในมือคุณ ทุกการเดินทาง\";}', 'sankhumpha84-facilitator@gmail.com', 'a:2:{s:2:\"th\";s:3240:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์\";s:2:\"en\";s:491:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\";}');
 
 -- --------------------------------------------------------
 
@@ -199,6 +200,15 @@ CREATE TABLE `contact` (
   `contact_type` enum('contact','room') COLLATE utf8_unicode_ci NOT NULL,
   `room_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `subject`, `name`, `email`, `mobile`, `message`, `ip`, `create_date`, `contact_type`, `room_id`) VALUES
+(1, 'ปปปปปป', 'บัณฑิต แสนคำภา', 'sankhumpha84@gmail.com', '954027399', 'ปปปปป', '172.18.0.1', '2017-10-01 09:38:49', 'contact', NULL),
+(2, 'ปปปปปป', 'บัณฑิต แสนคำภา', 'sankhumpha84@gmail.com', '954027399', 'ปปปปป', '172.18.0.1', '2017-10-01 09:42:37', 'contact', NULL),
+(3, 'ปปปปปป', 'บัณฑิต แสนคำภา', 'sankhumpha84@gmail.com', '954027399', 'ปปปปป', '172.18.0.1', '2017-10-01 09:42:53', 'contact', NULL);
 
 -- --------------------------------------------------------
 
@@ -518,7 +528,9 @@ INSERT INTO `gallery` (`gallery_id`, `room_id`, `gallery_path`) VALUES
 (2, 1, 'room-gallery-1483008952.jpg'),
 (3, 1, 'room-gallery-1483008957.jpg'),
 (4, 2, 'room-gallery-1483009292.jpg'),
-(5, 2, 'room-gallery-1483009297.jpg');
+(5, 2, 'room-gallery-1483009297.jpg'),
+(6, 10, 'tour-gallery-1506835730.jpg'),
+(7, 10, 'tour-gallery-1506835952.jpg');
 
 -- --------------------------------------------------------
 
@@ -598,7 +610,7 @@ INSERT INTO `lang_static` (`id`, `name`, `data`) VALUES
 (39, 'all', 'a:2:{s:2:\"th\";s:21:\"ทั้งหมด\";s:2:\"en\";s:3:\"All\";}'),
 (40, 'sorry', 'a:2:{s:2:\"th\";s:136:\"ขออภัย ช่วงเวลาดั่งกล่าวมีข้อมูลการจองห้องแล้ว\";s:2:\"en\";s:19:\"Sorry, Booking fail\";}'),
 (41, 'login', 'a:2:{s:2:\"th\";s:24:\"เข้าระบบ\";s:2:\"en\";s:5:\"Login\";}'),
-(68, 'about', 'a:2:{s:2:\"th\";s:36:\"เกี่ยวกับเรา\";s:2:\"en\";s:5:\"About\";}'),
+(68, 'about', 'a:2:{s:2:\"th\";s:36:\"เกี่ยวกับเรา\";s:2:\"en\";s:8:\"About Us\";}'),
 (43, 'register', 'a:2:{s:2:\"th\";s:33:\"สมัครสมาชิก\";s:2:\"en\";s:8:\"Register\";}'),
 (44, 'mobile', 'a:2:{s:2:\"th\";s:39:\"เบอร์โทรศัพท์\";s:2:\"en\";s:6:\"Mobile\";}'),
 (45, 'thankyou register', 'a:2:{s:2:\"th\";s:136:\"ขอขอบพระคุณ ระบบได้ทำการลงทะเบียนเรียบร้อยแล้ว\";s:2:\"en\";s:22:\"Thank you, Pleas login\";}'),
@@ -631,7 +643,18 @@ INSERT INTO `lang_static` (`id`, `name`, `data`) VALUES
 (73, 'Best Packages', 'a:2:{s:2:\"th\";s:21:\"ยอดนิยม\";s:2:\"en\";s:13:\"Best Packages\";}'),
 (74, 'book now', 'a:2:{s:2:\"th\";s:18:\"จองเลย\";s:2:\"en\";s:8:\"Book Now\";}'),
 (75, 'MOST POPULAR PLACES', 'a:2:{s:2:\"th\";s:45:\"แพ็คเกจที่โดนใจ\";s:2:\"en\";s:19:\"MOST POPULAR PLACES\";}'),
-(76, 'desc most pop', 'a:2:{s:2:\"th\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";s:2:\"en\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";}');
+(76, 'desc most pop', 'a:2:{s:2:\"th\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";s:2:\"en\";s:165:\"เราได้คัดสรรค์แพ็คเกจที่คุ้มกับคุณมากที่สุดมานำเสนอแล้ว\";}'),
+(77, 'package', 'a:2:{s:2:\"th\";s:36:\"แพ็คเกจโดนใจ\";s:2:\"en\";s:7:\"Package\";}'),
+(78, 'category', 'a:2:{s:2:\"th\";s:24:\"หมวดหมู่\";s:2:\"en\";s:8:\"Category\";}'),
+(79, 'where', 'a:2:{s:2:\"th\";s:27:\"สถานที่ไป\";s:2:\"en\";s:5:\"Where\";}'),
+(80, 'when', 'a:2:{s:2:\"th\";s:15:\"เมื่อ\";s:2:\"en\";s:4:\"When\";}'),
+(81, 'destination', 'a:2:{s:2:\"th\";s:21:\"จุดหมาย\";s:2:\"en\";s:11:\"Destination\";}'),
+(82, 'from', 'a:2:{s:2:\"th\";s:9:\"จาก\";s:2:\"en\";s:4:\"From\";}'),
+(83, 'to', 'a:2:{s:2:\"th\";s:9:\"ถึง\";s:2:\"en\";s:2:\"To\";}'),
+(84, 'max budget', 'a:2:{s:2:\"th\";s:24:\"งบประมาณ\";s:2:\"en\";s:10:\"Max Budget\";}'),
+(85, 'related tours ', 'a:2:{s:2:\"th\";s:54:\"ทัวร์ที่เกี่ยวข้อง\";s:2:\"en\";s:13:\"RELATED TOURS\";}'),
+(86, 'view more', 'a:2:{s:2:\"th\";s:33:\"ดูเพิ่มเติม\";s:2:\"en\";s:9:\"View more\";}'),
+(87, 'send message', 'a:2:{s:2:\"th\";s:30:\"ส่งข้อความ\";s:2:\"en\";s:12:\"Send Message\";}');
 
 -- --------------------------------------------------------
 
@@ -711,7 +734,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `category_id`, `room_no`, `room_name`, `room_short`, `room_description`, `room_price`, `room_total`, `room_status`, `room_image`, `seo_title`, `seo_keywords`, `seo_description`, `link`, `star`, `country_id`, `deal`, `use_view`) VALUES
-(10, 2, '0001-60', 'a:2:{s:2:\"th\";s:33:\"ทิปสิงคโปร์\";s:2:\"en\";s:14:\"Singapore Trip\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:1080:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์\";s:2:\"en\";s:245:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\";}', 35000, NULL, 'Y', 'tour-main-101.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', '', 4, 702, 'hot', 0),
+(10, 2, '0001-60', 'a:2:{s:2:\"th\";s:33:\"ทิปสิงคโปร์\";s:2:\"en\";s:14:\"Singapore Trip\";}', 'a:2:{s:2:\"th\";s:247:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ \";s:2:\"en\";s:74:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry.\";}', 'a:2:{s:2:\"th\";s:1080:\"เซลส์ไฮเทคแซวซิตี้เซ็กส์ เฟอร์นิเจอร์เซ็กซ์ ควีนวัคค์เอ็นจีโอจิตเภท รีโมตรองรับแคมป์ ดีพาร์ตเมนต์มอยส์เจอไรเซอร์แจ๊กพ็อตบัส ไวกิ้งโฟล์คสปาย เวิลด์ซีดานเซาท์มาม่าห่วย มั้งแคมป์ เสือโคร่งเอเซียอันตรกิริยาเลดี้อิมพีเรียล แคชเชียร์แจ๊กพ็อตเซ่นไหว้บอร์ด สไลด์มอลล์อุปทาน ยะเยือกแฟล็ต บลูเบอร์รีฮาราคีรีจุ๊ยดยุก โปรเจ็กเตอร์พาสตาเอสเปรสโซแบด เซ่นไหว้ศิรินทร์บอดี้ กลาสเลคเชอร์\";s:2:\"en\";s:245:\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\";}', 35000, NULL, 'Y', 'tour-main-101.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'http://www.google.co.th', 4, 702, 'hot', 0),
 (11, 1, '0002-60', 'a:2:{s:2:\"th\";s:39:\"นิวยอร์คซิตี้\";s:2:\"en\";s:13:\"New York City\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 69000, NULL, 'Y', 'tour-main-11.jpg', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', 'a:2:{s:2:\"th\";s:0:\"\";s:2:\"en\";s:0:\"\";}', NULL, 4, 840, 'hotel', 0);
 
 -- --------------------------------------------------------
@@ -742,6 +765,12 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `content`
@@ -808,6 +837,11 @@ ALTER TABLE `booking`
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
@@ -816,7 +850,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `ipn_listen`
 --
@@ -826,7 +860,7 @@ ALTER TABLE `ipn_listen`
 -- AUTO_INCREMENT for table `lang_static`
 --
 ALTER TABLE `lang_static`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `member`
 --

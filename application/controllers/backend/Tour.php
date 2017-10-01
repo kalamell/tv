@@ -55,6 +55,7 @@ class Tour extends Backend_Controller {
               'gallery_path' => $data['file_name'],
               'room_id' => $this->input->post('room_id')
             ));
+
         }
         redirect('backend/tour/gallery/'.$this->input->post('room_id'));
 
@@ -95,6 +96,7 @@ class Tour extends Backend_Controller {
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
                 'deal' => $this->input->post('deal'),
+                'use_view' => $this->input->post('use_view'),
             ));
             $room_id = $this->db->insert_id();
 
@@ -160,6 +162,7 @@ class Tour extends Backend_Controller {
                 'star' => $this->input->post('star'),
                 'country_id' => $this->input->post('country_id'),
                 'deal' => $this->input->post('deal'),
+                'use_view' => $this->input->post('use_view'),
             ));
             $room_id = $this->input->post('room_id');
 

@@ -98,6 +98,12 @@
                         <input type="radio" name="room_status"  <?=$r->room_status=='N'?'checked':'';?> class="" value="N"> ปิดแสดงผล
                       </div>
 
+                      <div class="form-group col-md-12">
+                        <label for="room_status">การแสดงข้อมูลรายละเอียด</label>
+                        <input type="radio" name="use_view" <?=$r->use_view=='0'?'checked':'';?> class="" value="0"> ดูรายละเอียดก่อน
+                        <input type="radio" name="use_view" <?=$r->use_view=='1'?'checked':'';?> class="" value="1"> ให้วิ่งลิ้งไปที่ Link affiliate
+                      </div>
+
                       <div class="form-group col-md-6">
                       <label for="room_image">ภาพ ( 270 x 228 )</label>
                        <?php if ($r->room_image!=''):?>

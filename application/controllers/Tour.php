@@ -8,6 +8,16 @@ class Tour extends Base_Controller
     public function id($id)
     {
 
+        $this->session->set_userdata('current_url', current_url());
+
+        $this->r = $this->db->where('room_id', $id)->join('category', 'rooms.category_id = category.category_id')->get('rooms')->row();
+        $this->gallery =  $this->db->where('room_id', $id)->get('gallery')->result();
+        //$this->image = $this->db->where('room_id', $id)->limit(1)->get('gallery')->row();
+
+        $this->rooms = $this->db->where('room_id !=', $id)->limit(20)->get('rooms')->result();
+
+
+        $this->render('tour/id', $this);
     }
 
     public function item($id, $room_url)

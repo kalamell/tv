@@ -25,7 +25,7 @@
         <div class="box-header">
           <h3 class="box-title">จัดการ แกลอรี่ห้อง <?=$room_name['th'];?></h3>
           <div class="box-tools">
-            <?=form_open_multipart('tour/do_gallery', array('class' => 'form-inline'));?>
+            <?=form_open_multipart('backend/tour/do_gallery', array('class' => 'form-inline'));?>
             <input type="hidden" name="room_id" value="<?=$r->room_id;?>">
             <input type="file" name="gallery_path" class="form-control"> ขนาด 548 x 452 &nbsp;<button type="submit" class="btn btn-info">Upload</button>
             <?=form_close();?>

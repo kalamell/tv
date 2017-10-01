@@ -97,6 +97,12 @@
                         <input type="radio" name="room_status" class="" value="N"> ปิดแสดงผล
                       </div>
 
+                      <div class="form-group col-md-12">
+                        <label for="room_status">การแสดงข้อมูลรายละเอียด</label>
+                        <input type="radio" name="use_view" checked class="" value="0"> ดูรายละเอียดก่อน
+                        <input type="radio" name="use_view" class="" value="1"> ให้วิ่งลิ้งไปที่ Link affiliate
+                      </div>
+
                       <div class="form-group col-md-6">
                         <label for="room_image">ภาพ</label>
                         <input type="file" name="room_image" class="form-control" id="room_image" placeholder="" value="">

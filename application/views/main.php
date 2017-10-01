@@ -1,227 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<base href="<?php echo base_url();?>assets/"/>
-<?php echo get_seo();?>
-<!-- Bootstrap stylesheet -->
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- font -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900%7CPT+Serif:400,400i,700,700i" rel="stylesheet">
-<link href="css/ele-style.css" rel="stylesheet" type="text/css"/>
-<!-- stylesheet -->
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-<!-- font-awesome -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<!-- crousel css -->
-<link href="js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
-<!--bootstrap select-->
-<link href="js/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
-<link href="js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-	<?php if (lang()=='th'):?>
-	#top-links .button li:first-child a:first-child:after, #top-links1 .button li:first-child a:first-child:after {
-		margin-left: 37px;
-	}
-	<?php endif;?>
-</style>
-</head>
-<body>
-<!-- top start here -->
-	<div id="top">
-		<div class="container">
-			<div id="top-links" class="nav">
-				<ul class="list-inline pull-left">
-					<li>
-						<a href="#"><?php echo line('welcome to');?> <?php echo title();?></a>
-					</li>
-					<li>
-						<form method="post" enctype="multipart/form-data" id="form-language">
-							<div class="btn-group">
-								<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-									<?php if (lang() =='th'):?>
-									ภาษา : <span class="name">
-                                        <span class="hidden-xs">ไทย</span>
-                                        <i class="fa fa-caret-down"></i></span>
-                                   	<?php else:?>
-                               		Language : <span class="name">
-                                    <span class="hidden-xs">English</span>
-                                    <i class="fa fa-caret-down"></i></span>
-                                   	<?php endif;?>
-								</button>
-								<ul class="dropdown-menu">
-									<?php if (lang() =='th'):?>
-	                                    <li><a href="<?php echo site_url('lang/en');?>">English</a></li>
-	                                    <li><a href="<?php echo site_url('lang/th');?>">ไทย</a></li>
-	                                <?php else:?>
-	                                	<li><a href="<?php echo site_url('lang/th');?>">Thai</a></li>
-	                                    <li><a href="<?php echo site_url('lang/en');?>">English</a></li>
-	                                <?php endif;?>
-								</ul>
-							</div>
-						</form>
-					</li>
-					<li style="display: none">
-						<form method="post" enctype="multipart/form-data" id="form-currency">
-							<div class="btn-group">
-								<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                      Currency : <span class="name"><span class="hidden-xs"> (USD)</span> <i class="fa fa-caret-down"></i></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><button class="currency-select btn btn-link btn-block" type="button" name="EUR">&#8364; Euro</button></li>
-									<li><button class="currency-select btn btn-link btn-block" type="button" name="GBP">&#163; Pound Sterling</button></li>
-									<li><button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button></li>
-								</ul>
-							</div>
-						</form>
-					</li>
-				</ul>
 
-				<ul class="list-inline pull-right button">
-					<li><a href="login.html"><?php echo line('login');?></a>
-						<a href="register.html"><?php echo line('register');?></a>
-					</li>
-					<li><a href="about.html"><?php echo line('about');?></a></li>
-					<li><a href="contact.html"><?php echo line('contact');?></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-<!-- top end here -->
-
-<!-- header start here-->
-	<header>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-md-4 col-xs-12">
-					<div class="social-icon">
-						<ul class="list-inline">
-							<?php if (get_facebook()):?>
-							<li>
-								<a href="<?php echo get_facebook();?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							</li>
-							<?php endif;?>
-
-							<?php if (get_twitter()):?>
-							<li>
-								<a href="<?php echo get_twitter();?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							</li>
-							<?php endif;?>
-
-							<?php if (get_google()):?>
-							<li>
-								<a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-							</li>
-							<?php endif;?>
-
-							<?php if (get_ig()):?>
-							<li>
-								<a href="<?php echo get_ig();?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-							</li>
-							<?php endif;?>
-
-						</ul>
-					</div>
-				</div>
-
-			    <div class="col-sm-4 col-md-4 col-xs-12">
-					<div id="logo">
-						<a href=""><img class="img-responsive" src="<?php echo site_url('public/upload/'.get_logo());?>" alt="logo" title="logo" /></a>
-					</div>
-				</div>
-
-			    <div class="col-sm-4 col-md-4 col-xs-12" style="display: none;">
-					<div class="button-login pull-right">
-						<button type="button" class="btn btn-default btn-lg" onclick="location.href='tour-booking-form.html'">Booking Now</button>
-						<button type="button" class="btn btn-primary btn-lg" onclick="location.href='tour-grid-view.html'">Take a tour <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-<!-- header end here -->
-
-<!-- menu start here -->
-	<div id="menu">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12 col-xs-12">
-					<nav class="navbar">
-						<div class="navbar-header">
-							<span class="menutext visible-xs">Menu</span>
-							<button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="btn btn-navbar navbar-toggle" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
-						</div>
-						<div class="collapse navbar-collapse navbar-ex1-collapse padd0">
-							<ul class="nav navbar-nav">
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">HOME</a>
-									<div class="dropdown-menu">
-										<div class="dropdown-inner">
-											<ul class="list-unstyled">
-												<li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i>Homepage 1</a></li>
-												<li><a href="header2.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Homepage 2</a></li>
-												<li><a href="header3.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Homepage 3</a></li>
-												<li><a href="header4.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Homepage 4</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">TOUR</a>
-									<div class="dropdown-menu">
-										<div class="dropdown-inner">
-											<ul class="list-unstyled">
-												<li><a href="tour-grid-view.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Tour</a></li>
-												<li><a href="tour-detail-view.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Tour Detail</a></li>
-												<li><a href="tour-booking-form.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Tour Booking Form</a></li>
-												<li><a href="thank-you.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Thank You</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li><a href="guides.html">GUIDES</a></li>
-								<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">BLOG</a>
-									<div class="dropdown-menu">
-										<div class="dropdown-inner">
-											<ul class="list-unstyled">
-												<li><a href="blog.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog</a></li>
-												<li><a href="blog-detail.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Blog Detail</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES</a>
-									<div class="dropdown-menu">
-										<div class="dropdown-inner">
-											<ul class="list-unstyled">
-												<li><a href="gallery.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Gallery</a></li>
-												<li><a href="error-404.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Error-404</a></li>
-												<li><a href="faq.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Faq</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">USER</a>
-									<div class="dropdown-menu">
-										<div class="dropdown-inner">
-											<ul class="list-unstyled">
-												<li><a href="login.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Login</a></li>
-												<li><a href="register.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Register</a></li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li><a href="about.html">ABOUT</a></li>
-								<li><a href="contact.html">CONTACT</a></li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- menu end here -->
 
 <!-- slider start here -->
 	<div class="slice">
@@ -239,41 +16,44 @@
 		<!-- slide-detail start here -->
 		<div class="slide-detail">
 			<div class="container">
-				<form class="form-horizontal" method="post">
+				<?php echo form_open('main/do_search', array('class' => 'form-horizontal'));?>
 					<div class="form-group">
 						<div class="col-sm-2 wid">
-							<h2>Where</h2>
-							<label>Destination</label>
-							<input name="s" class="form-control" value="" placeholder="Enter a destination or tour type.." type="text">
+							<h2><?php echo line('where');?></h2>
+							<label><?php echo line('destination');?></label>
+							<input name="s" class="form-control" value="" placeholder="" type="text">
 						</div>
 
 						<div class="col-sm-10 wid1">
-							<h2>When</h2>
+							<h2><?php echo line('when');?></h2>
 							<div class="col-sm-2 paddleft wid date">
-								<label>From</label>
-								<input name="s" class="form-control" value="" placeholder="dd/mm/yy" type="text">
+								<label><?php echo line('from');?></label>
+								<input name="from_date" class="form-control" value="" placeholder="dd/mm/yy" type="text">
 								<button type="button" class="calender"><i class="fa fa-calendar-o" aria-hidden="true"></i></button>
 							</div>
 							<div class="col-sm-2 wid date padd-left">
-								<label>To</label>
-								<input name="s" class="form-control" value="" placeholder="dd/mm/yy" type="text">
+								<label><?php echo line('to');?></label>
+								<input name="to_date" class="form-control" value="" placeholder="dd/mm/yy" type="text">
 								<button type="button" class="calender"><i class="fa fa-calendar-o" aria-hidden="true"></i></button>
 							</div>
 							<div class="col-sm-2 wid padd-left">
-								<label>Trip Type</label>
-								<select class="selectpicker form-control" name=	"location">
-									<option value="1">Trip Type</option>
-									<option value="0">Location 1</option>
-									<option value="0">Location 2</option>
-									<option value="0">Location 3</option>
+								<label><?php echo line('category');?></label>
+								<select class="selectpicker form-control" name=	"category_id">
+									<option value=""><?php echo line('choose');?></option>
+									<?php $category = get_category();?>
+									<?php foreach($category as $cat):
+									$lang_cat = unserialize($cat->category_name);
+									?>
+										<option value="<?php echo $cat->category_id;?>"><?php echo $lang_cat[lang()];?></option>
+									<?php endforeach;?>
 								</select>
 							</div>
 							<div class="col-sm-3 wid2 padd-left">
-								<label>Max Budget</label>
-								<input name="s" class="form-control" value="" placeholder="Max budget ($)" type="text">
+								<label><?php echo line('max budget');?></label>
+								<input name="price" class="form-control" value="" placeholder="" type="text">
 							</div>
 							<div class="col-sm-3 wid2 padd-left">
-								<button class="btn-primary" type="button">Search Tours</button>
+								<button class="btn-primary" type="submit"><?php echo line('search');?></button>
 							</div>
 						</div>
 					</div>
@@ -310,7 +90,7 @@
 						$name  =unserialize($rm->room_name);
 						?>
 							<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-								<div class="product-thumb">
+								<div class="product-thumb" onclick="top.location.href='<?php echo getLink($rm->room_id);?>';">
 									<div class="image">
 										<a href="<?php echo getLink($rm->room_id);?>"><img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
 										<div class="hoverbox">
@@ -325,35 +105,7 @@
 											</ul>
 										</div>
 									</div>
-									<div class="caption" style="display: none;">
-										<div class="inner">
-											<img src="images/icon-map.png" class="img-responsive" title="map" alt="map" />
-											<h4>Central Park</h4>
-											<div class="rate">
-												<span>1270 Reviews</span>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star-half-o" aria-hidden="true"></i>
-											</div>
-										</div>
-										<div class="inner">
-											<img src="images/icon-map.png" class="img-responsive" title="map" alt="map" />
-											<h4>Metropolitan Museum of Art</h4>
-											<div class="rate">
-												<span>1270 Reviews</span>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star" aria-hidden="true"></i>
-												<i class="fa fa-star-half-o" aria-hidden="true"></i>
-											</div>
-										</div>
-										<div class="text-center">
-											<button type="button" onclick="location.href='tour-grid-view.html'">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-										</div>
-									</div>
+
 								</div>
 							</div>
 					<?php endforeach;?>
@@ -367,7 +119,7 @@
 							$name  =unserialize($rm->room_name);
 							?>
 								<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-									<div class="product-thumb">
+									<div class="product-thumb" onclick="top.location.href='<?php echo getLink($rm->room_id);?>';">
 										<div class="image">
 											<a href="<?php echo getLink($rm->room_id);?>">
 												<img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" /></a>
@@ -464,7 +216,7 @@
 						$room_short = $short[$lang];
 						?>
 						<div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-							<div class="product-thumb">
+							<div class="product-thumb" onclick="top.location.href='<?php echo getLink($rm->room_id);?>';">
 								<div class="image">
 									<a href="<?php echo getLink($rm->room_id);?>">
 										<img src="<?=base_url();?>public/upload/tour/<?=$rm->room_image;?>" alt="<?php echo $name[$lang];?>" title="<?php echo $name[$lang];?>" class="img-responsive" />
@@ -1892,21 +1644,3 @@
 <!-- gallery end here -->
 
 
-
-<?php $this->load->view('_footer');?>
-
-<!-- jquery -->
-<script src="js/jquery.2.1.1.min.js" type="text/javascript"></script>
-<!-- bootstrap js -->
-<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<!--bootstrap select-->
-<script src="js/dist/js/bootstrap-select.js" type="text/javascript"></script>
-<!-- owlcarousel js -->
-<script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
-<!--internal js-->
-<script src="js/internal.js" type="text/javascript"></script>
-<!--date js-->
-<script src="js/datetimepicker/moment.js" type="text/javascript"></script>
-<script src="js/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-</body>
-</html>

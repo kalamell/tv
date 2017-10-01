@@ -89,10 +89,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'db',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '123132123',
-	'database' => 'travel',
+	'password' => '',
+	'database' => 'resort',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

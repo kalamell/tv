@@ -28,7 +28,7 @@
                         <?php endif;?>
                         <div class="matter">
                             <p class="des"><span class="icon_building_alt"></span> <?php echo $bcname[$lang];?></p>
-                            <button type="button" onclick="top.location.href='<?php echo site_url('tour/id/'.$bc->room_id);?>'"> Booking Now</button>
+                            <button type="button" onclick="top.location.href='<?php echo site_url('tour/id/'.$bc->room_id);?>'"> <?php echo line('book now');?></button>
                         </div>
                     </div>
                 </div>
@@ -181,3 +181,19 @@
     </div>
 </footer>
 <!-- footer end here -->
+
+<!-- jquery -->
+<script src="js/jquery.2.1.1.min.js" type="text/javascript"></script>
+<!-- bootstrap js -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--bootstrap select-->
+<script src="js/dist/js/bootstrap-select.js" type="text/javascript"></script>
+<!-- owlcarousel js -->
+<script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+<!--internal js-->
+<script src="js/internal.js" type="text/javascript"></script>
+<!--date js-->
+<script src="js/datetimepicker/moment.js" type="text/javascript"></script>
+<script src="js/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+</body>
+</html>

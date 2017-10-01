@@ -30,15 +30,16 @@
 
         <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-     
+
         <li role="presentation" class="active"><a href="#th" aria-controls="th" role="tab" data-toggle="tab">ไทย</a></li>
         <li role="presentation"><a href="#en" aria-controls="en" role="tab" data-toggle="tab">อังกฤษ</a></li>
          <li role="presentation" class=""><a href="#other" aria-controls="other" role="tab" data-toggle="tab">ทั่วไป</a></li>
       </ul>
 
       <!-- Tab panes -->
-      <?php 
+      <?php
       $title = unserialize($r->title);
+      $about = unserialize($r->about);
       $description = unserialize($r->description);
       $keywords = unserialize($r->keywords);
       $footer = unserialize($r->footer);
@@ -78,6 +79,13 @@
             <label for="slogan">slogan</label>
             <textarea name="slogan[th]" class="form-control" id="slogan"><?=$slogan['th'];?></textarea>
           </div>
+
+          <div class="form-group">
+            <label for="about">เกี่ยวกับเรา</label>
+            <textarea name="about[th]" rows="5" class="form-control" id="about" placeholder="รายละเอียดเว็บไซต์"><?=$about['th'];?></textarea>
+          </div>
+
+
         </div>
 
 
@@ -111,9 +119,14 @@
             <label for="slogan">slogan</label>
             <textarea name="slogan[en]" class="form-control" id="slogan"><?=$slogan['en'];?></textarea>
           </div>
+
+          <div class="form-group">
+            <label for="about">เกี่ยวกับเรา</label>
+            <textarea name="about[en]" rows="5" class="form-control" id="about" placeholder="รายละเอียดเว็บไซต์"><?=$about['en'];?></textarea>
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="other"  style="padding-top: 10px;">
-          
+
 
           <div class="form-group">
             <label for="mobile">เบอร์ติดต่อ</label>

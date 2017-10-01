@@ -25,6 +25,11 @@ class Contact extends Base_Controller
                 'rules' => 'required'
             ),
             array(
+                'field' => 'mobile',
+                'label' => 'mobile',
+                'rules' => 'required'
+            ),
+            array(
                 'field' => 'email',
                 'label' => 'email',
                 'rules' => 'required|valid_email'
@@ -40,9 +45,9 @@ class Contact extends Base_Controller
                 'mobile' => $this->input->post('mobile'),
                 'ip' => $this->input->ip_address()
             ));
-            //$this->sessiono->set_flashdata('save', 1);
+            $this->session->set_flashdata('save', 1);
         }
-        echo 'ok';
+        redirect('contact');
     }
 
     public function subscribe()

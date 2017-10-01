@@ -98,6 +98,16 @@ function get_address()
     return $text[$lang];
 }
 
+function get_about()
+{
+    $ci =& get_instance();
+    $lang = $ci->session->userdata('lang');
+    $lang = $lang=='th'?'th':'en';
+    $rs = $ci->db->select('about')->get('config')->row();
+    $text = unserialize($rs->about);
+    return $text[$lang];
+}
+
 function get_link_map()
 {
     $ci =& get_instance();
@@ -240,13 +250,8 @@ function get_title()
 {
 	$ci =& get_instance();
 	$title = '';
-	if ($ci->uri->segment(1)=='') {
-		$title = $ci->db->select('title')->get('config')->row()->title;
-	} else {
-		if ($ci->uri->segment(1)=='member') {
-			$title = 'ส่วนงานสมาชิก';
-		}
-	}
+	$title = $ci->db->select('title')->get('config')->row()->title;
+
 	return $title;
 }
 
@@ -507,8 +512,12 @@ function getLink($room_id)
     if ($rs->num_rows()==0) {
         return site_url();
     } else {
-        if ($rs->row()->link!='') {
-            return $rs->row()->link;
+        if ($rs->row()->use_view=='1') {
+            if ($rs->row()->link!='') {
+                return $rs->row()->link;
+            } else {
+                return site_url('tour/id/'.$room_id);
+            }
         } else {
             return site_url('tour/id/'.$room_id);
         }

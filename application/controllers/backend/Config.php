@@ -17,6 +17,7 @@ class Config extends Backend_Controller {
 	{
 		$this->db->update('config', array(
 			'title' => serialize($this->input->post('title')),
+			'about' => serialize($this->input->post('about')),
 			'description' => serialize($this->input->post('description')),
 			'keywords' => serialize($this->input->post('keywords')),
 			'footer' => serialize($this->input->post('footer')),
