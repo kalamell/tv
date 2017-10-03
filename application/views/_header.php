@@ -70,8 +70,8 @@ $class = $this->uri->segment(1)=='about'?'about':'';
                 </ul>
 
                 <ul class="list-inline pull-right button">
-                    <li><a href="<?php echo site_url('login');?>"><?php echo line('login');?></a>
-                        <a href="<?php echo site_url('register');?>"><?php echo line('register');?></a>
+                    <li><a href="<?php echo site_url('auth/login');?>"><?php echo line('login');?></a>
+                        <a href="<?php echo site_url('auth/register');?>"><?php echo line('register');?></a>
                     </li>
                     <li><a href="<?php echo site_url('about');?>"><?php echo line('about');?></a></li>
                     <li><a href="<?php echo site_url('contact');?>"><?php echo line('contact');?></a></li>
